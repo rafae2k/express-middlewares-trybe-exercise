@@ -6,7 +6,7 @@ router.post('/sales', function (req, res) {
   const {
     productName,
     infos,
-    infos: { salesDate, warrantyPeriod },
+    infos: { saleDate, warrantyPeriod },
   } = req.body;
 
   if (!productName) {
@@ -40,13 +40,13 @@ router.post('/sales', function (req, res) {
   const dataRegex =
     /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/g;
 
-  //  7
-  if (!salesDate) {
+  // 7
+  if (!saleDate) {
     return res.status(400).json({ message: 'O campo saleDate é obrigatório' });
   }
 
   //8
-  if (!moment(salesDate, 'DD/MM/YYYY', true).isValid()) {
+  if (!moment(saleDate, 'DD/MM/YYYY', true).isValid()) {
     return res
       .status(400)
       .json({ message: 'O campo saleDate não é uma data válida' });
